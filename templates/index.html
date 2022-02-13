@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Motor Vehicle Registration Schedule">
+    <meta name="author" content="Ronie Martinez">
+    <title>Motor Vehicle Registration Schedule</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-5 text-center">When to Renew your Vehicle's Registration?</h1>
+        <p class="lead text-center">Philippines</p>
+    </div>
+    <div class="row">
+        <div class="col-xl-8 col-lg-8 col-md-8 mx-auto">
+
+            <div class="box-body">
+                {% if has_schedule %}
+                    <div class="text-center">
+                        <h5>You are scheduled for renewal on these dates:</h5>
+                    </div>
+                    {{ has_schedule | safe }}
+                    <hr>
+                    <div class="text-center">
+                        <h5>Check Another License Plate</h5>
+                    </div>
+                {% endif %}
+
+                <form method="post" autocomplete="off">
+                    {{ form.csrf_token }}
+                    <div class="form-group row">
+                        <label for="{{ form.license_plate.id }}"
+                               class="col-sm-2 col-form-label {{ "text-danger" if form.license_plate.id in form.errors else "" }}">
+                            {{ form.license_plate.label }}
+                        </label>
+                        <div class="col-sm-10">
+                            {% if form.license_plate.id in form.errors %}
+                                {{ form.license_plate(class_=form.license_plate.render_kw["class"] + " is-invalid") }}
+                            {% else %}
+                                {{ form.license_plate }}
+                            {% endif %}
+                        </div>
+                        {% if form.license_plate.id in form.errors %}
+                            <div class="col-sm-12">
+                                <small class="text-danger">{{ form.license_plate.errors.0 }}</small>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group row">{{ form.get_schedule }}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

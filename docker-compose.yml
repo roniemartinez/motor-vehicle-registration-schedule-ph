@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    image: motor-vehicle-registration-schedule
+    command: python application.py
+    environment:
+      FLASK_DEBUG: 1
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+    ports:
+      - "127.0.0.1:5000:5000"
