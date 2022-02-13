@@ -32,10 +32,10 @@
                     {{ form.csrf_token }}
                     <div class="form-group row">
                         <label for="{{ form.license_plate.id }}"
-                               class="col-sm-2 col-form-label {{ "text-danger" if form.license_plate.id in form.errors else "" }}">
+                               class="col-12 col-form-label {{ "text-danger" if form.license_plate.id in form.errors else "" }}">
                             {{ form.license_plate.label }}
                         </label>
-                        <div class="col-sm-10">
+                        <div class="col-12">
                             {% if form.license_plate.id in form.errors %}
                                 {{ form.license_plate(class_=form.license_plate.render_kw["class"] + " is-invalid") }}
                             {% else %}
@@ -43,11 +43,21 @@
                             {% endif %}
                         </div>
                         {% if form.license_plate.id in form.errors %}
-                            <div class="col-sm-12">
+                            <div class="col-12">
                                 <small class="text-danger">{{ form.license_plate.errors.0 }}</small>
                             </div>
                         {% endif %}
                     </div>
+                    {% if form.recaptcha %}
+                        <div class="form-group row justify-content-center">
+                            {{ form.recaptcha }}
+                            {% if form.recaptcha.id in form.errors %}
+                                <div class="col-12 text-center ">
+                                    <small class="text-danger">{{ form.recaptcha.errors.0 }}</small>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
                     <div class="form-group row">{{ form.get_schedule }}</div>
                 </form>
             </div>

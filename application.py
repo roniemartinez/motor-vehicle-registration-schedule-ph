@@ -1,15 +1,15 @@
 import logging
 import os
-import re
 import sys
-from calendar import HTMLCalendar, monthrange
+from calendar import monthrange
 from datetime import datetime
+from typing import List, Tuple, Union
 
 from flask import Flask, render_template, request
-from flask_wtf import FlaskForm, RecaptchaField
 from pytz import timezone
-from wtforms import StringField, SubmitField
-from wtforms.validators import InputRequired, Regexp
+
+from custom_calendar import CustomHTMLCalendar
+from forms import PLATE_NUMBER_PATTERN, VehicleRegistrationScheduleForm
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -17,12 +17,13 @@ logger = logging.getLogger(__name__)
 application = Flask(__name__)
 
 application.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+application.config["RECAPTCHA_PUBLIC_KEY"] = os.getenv("RECAPTCHA_PUBLIC_KEY")
+application.config["RECAPTCHA_PRIVATE_KEY"] = os.getenv("RECAPTCHA_PRIVATE_KEY")
+application.config["RECAPTCHA_ENABLED"] = int(os.getenv("RECAPTCHA_ENABLED", 0))
 
-plate_number_pattern = re.compile(r"([a-zA-Z]{2,3}[\s-]?(\d{2,5}))|((\d{4})[\s-]?[a-zA-Z]{2})")
 
-
-def get_day_groups(year, month):
-    day_groups = [[], [], [], []]
+def get_day_groups(year: int, month: int) -> List[List[int]]:
+    day_groups: List[List[int]] = [[], [], [], []]
     for i in range(1, monthrange(year, month)[1] + 1):
         try:
             day_groups[(i - 1) // 7].append(i)
@@ -31,8 +32,8 @@ def get_day_groups(year, month):
     return day_groups
 
 
-def get_schedule(license_plate):
-    a, b = plate_number_pattern.match(license_plate).groups()[1::2]
+def get_schedule(license_plate: str) -> Tuple[List[int], int, int]:
+    a, b = PLATE_NUMBER_PATTERN.match(license_plate).groups()[1::2]  # type: ignore
     week_digit, month_digit = map(int, (a or b)[-2:])
     month = month_digit or 10
     week_index = dict(zip(range(10), [3, 0, 0, 0, 1, 1, 1, 2, 2, 3]))[week_digit]
@@ -46,41 +47,15 @@ def get_schedule(license_plate):
     return days, month, year
 
 
-class VehicleRegistrationScheduleForm(FlaskForm):
-    license_plate = StringField(
-        "License Plate",
-        validators=[
-            InputRequired(),
-            Regexp(plate_number_pattern, message="Does not match any accepted license plate format"),
-        ],
-        render_kw={"placeholder": "Enter License Plate", "class": "form-control"},
-    )
-    # recaptcha = RecaptchaField()
-    get_schedule = SubmitField("Get Schedule", render_kw={"class": "btn btn-primary btn-block"})
-
-
-class CustomHTMLCalendar(HTMLCalendar):
-    cssclass_month_head = "month text-center"
-    cssclass_month = "month table table-responsive table-sm d-flex justify-content-center"
-
-    def __init__(self, days):
-        super(CustomHTMLCalendar, self).__init__(firstweekday=6)
-        self.days = days
-
-    def formatday(self, day, weekday):
-        if day == 0:
-            # day outside month
-            return '<td class="%s">&nbsp;</td>' % self.cssclass_noday
-        else:
-            classes = self.cssclasses[weekday] + " table-danger" if day in self.days else ""
-            return '<td class="%s">%d</td>' % (classes, day)
-
-
 @application.route("/", methods=["GET", "POST"])
-def motor_vehicle_registration_schedule():
+def motor_vehicle_registration_schedule() -> str:
     form = VehicleRegistrationScheduleForm()
-    has_schedule = False
-    days = []
+
+    if not application.config["RECAPTCHA_ENABLED"]:
+        del form.recaptcha
+
+    has_schedule: Union[str, bool] = False
+    days: List[int] = []
     if request.method == "POST" and form.validate_on_submit():
         try:
             days, month, year = get_schedule(form.license_plate.data)
