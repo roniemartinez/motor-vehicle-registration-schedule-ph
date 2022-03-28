@@ -307,7 +307,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pyproject-flake8"
-version = "0.0.1a2"
+version = "0.0.1a3"
 description = "pyproject-flake8 (`pflake8`), a monkey patching wrapper to connect flake8 with pyproject.toml configuration"
 category = "dev"
 optional = false
@@ -315,7 +315,7 @@ python-versions = "*"
 
 [package.dependencies]
 flake8 = "*"
-toml = "*"
+tomli = {version = "*", markers = "python_version < \"3.11.0a7\""}
 
 [[package]]
 name = "pytz"
@@ -324,14 +324,6 @@ description = "World timezone definitions, modern and historical"
 category = "main"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "toml"
-version = "0.10.2"
-description = "Python Library for Tom's Obvious, Minimal Language"
-category = "dev"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "tomli"
@@ -433,7 +425,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0"
-content-hash = "b5224b8d3905462d193d34909ec80e449f2d8153bfb73c081233be1371e5c38f"
+content-hash = "233d5c91a1998c9105e3b09fbef6054499d6ad56425c6f0c7587b9bee19183de"
 
 [metadata.files]
 autoflake = [
@@ -777,16 +769,12 @@ pyflakes = [
     {file = "pyflakes-2.4.0.tar.gz", hash = "sha256:05a85c2872edf37a4ed30b0cce2f6093e1d0581f8c19d7393122da7e25b2b24c"},
 ]
 pyproject-flake8 = [
-    {file = "pyproject-flake8-0.0.1a2.tar.gz", hash = "sha256:bdeca37f78ecd34bd64a49d3657d53d099f5445831071a31c46e1fe20cd61461"},
-    {file = "pyproject_flake8-0.0.1a2-py2.py3-none-any.whl", hash = "sha256:e61ed1dc088e9f9f8a7170967ac4ec135acfef3a59ab9738c7b58cc11f294a7e"},
+    {file = "pyproject-flake8-0.0.1a3.tar.gz", hash = "sha256:4e3e704c639e61d9ab75aadf44dbf31a07281035896ad7d725ed7f386fd79674"},
+    {file = "pyproject_flake8-0.0.1a3-py2.py3-none-any.whl", hash = "sha256:1f434780791df82e9ca2358f4c542a2b2fdd3a77e666a6ad3f60a6a1464da4e2"},
 ]
 pytz = [
     {file = "pytz-2022.1-py2.py3-none-any.whl", hash = "sha256:e68985985296d9a66a881eb3193b0906246245294a881e7c8afe623866ac6a5c"},
     {file = "pytz-2022.1.tar.gz", hash = "sha256:1e760e2fe6a8163bc0b3d9a19c4f84342afa0a2affebfaa84b01b978a02ecaa7"},
-]
-toml = [
-    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
-    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
 ]
 tomli = [
     {file = "tomli-1.2.3-py3-none-any.whl", hash = "sha256:e3069e4be3ead9668e21cb9b074cd948f7b3113fd9c8bba083f48247aab8b11c"},
