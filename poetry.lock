@@ -307,7 +307,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pyproject-flake8"
-version = "0.0.1a3"
+version = "0.0.1a4"
 description = "pyproject-flake8 (`pflake8`), a monkey patching wrapper to connect flake8 with pyproject.toml configuration"
 category = "dev"
 optional = false
@@ -315,7 +315,7 @@ python-versions = "*"
 
 [package.dependencies]
 flake8 = "*"
-tomli = {version = "*", markers = "python_version < \"3.11.0a7\""}
+tomli = {version = "*", markers = "python_version < \"3.11\""}
 
 [[package]]
 name = "pytz"
@@ -425,7 +425,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0"
-content-hash = "087bdcfe30b8d01efdcd508377066c985abbb0563be099c39b406e27889c32d7"
+content-hash = "6cba1db3d52fcbc987a1f49f28ba54c771916672ac5a6fd8a813f46794f94a1f"
 
 [metadata.files]
 autoflake = [
@@ -769,8 +769,8 @@ pyflakes = [
     {file = "pyflakes-2.4.0.tar.gz", hash = "sha256:05a85c2872edf37a4ed30b0cce2f6093e1d0581f8c19d7393122da7e25b2b24c"},
 ]
 pyproject-flake8 = [
-    {file = "pyproject-flake8-0.0.1a3.tar.gz", hash = "sha256:4e3e704c639e61d9ab75aadf44dbf31a07281035896ad7d725ed7f386fd79674"},
-    {file = "pyproject_flake8-0.0.1a3-py2.py3-none-any.whl", hash = "sha256:1f434780791df82e9ca2358f4c542a2b2fdd3a77e666a6ad3f60a6a1464da4e2"},
+    {file = "pyproject-flake8-0.0.1a4.tar.gz", hash = "sha256:8ed9453f1d984cfe94c998f9840275359e29e7f435b8ddd188ae084e2dc1270c"},
+    {file = "pyproject_flake8-0.0.1a4-py2.py3-none-any.whl", hash = "sha256:1a8f94e18d08677ee780625049d9d00a9ee823661c6606caab8a383351037a75"},
 ]
 pytz = [
     {file = "pytz-2022.1-py2.py3-none-any.whl", hash = "sha256:e68985985296d9a66a881eb3193b0906246245294a881e7c8afe623866ac6a5c"},
