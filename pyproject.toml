@@ -19,7 +19,7 @@ black = "^22.6.0"
 isort = "^5.10.1"
 mypy = "^0.971"
 pyproject-flake8 = "^0.0.1a4"
-types-pytz = "^2022.1.2"
+types-pytz = "^2022.2.1"
 
 [tool.isort]
 line_length = 120
