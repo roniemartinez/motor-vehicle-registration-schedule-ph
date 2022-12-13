@@ -360,7 +360,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "types-pytz"
-version = "2022.5.0.0"
+version = "2022.6.0.1"
 description = "Typing stubs for pytz"
 category = "dev"
 optional = false
@@ -448,7 +448,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0"
-content-hash = "4959e9263a7cdaef55d82114b53f6c6fdc0bee600de6981802b35b7dba79dc4d"
+content-hash = "d4cc86b6d1d16aa6bda9c24fa7b0e8945c4ba5836ce7764733d39dc37f0c0183"
 
 [metadata.files]
 autoflake = [
@@ -853,8 +853,8 @@ typed-ast = [
     {file = "typed_ast-1.5.3.tar.gz", hash = "sha256:27f25232e2dd0edfe1f019d6bfaaf11e86e657d9bdb7b0956db95f560cceb2b3"},
 ]
 types-pytz = [
-    {file = "types-pytz-2022.5.0.0.tar.gz", hash = "sha256:0c163b15d3e598e6cc7074a99ca9ec72b25dc1b446acc133b827667af0b7b09a"},
-    {file = "types_pytz-2022.5.0.0-py3-none-any.whl", hash = "sha256:a8e1fe6a1b270fbfaf2553b20ad0f1316707cc320e596da903bb17d7373fed2d"},
+    {file = "types-pytz-2022.6.0.1.tar.gz", hash = "sha256:d078196374d1277e9f9984d49373ea043cf2c64d5d5c491fbc86c258557bd46f"},
+    {file = "types_pytz-2022.6.0.1-py3-none-any.whl", hash = "sha256:bea605ce5d5a5d52a8e1afd7656c9b42476e18a0f888de6be91587355313ddf4"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.1.1-py3-none-any.whl", hash = "sha256:21c85e0fe4b9a155d0799430b0ad741cdce7e359660ccbd8b530613e8df88ce2"},
