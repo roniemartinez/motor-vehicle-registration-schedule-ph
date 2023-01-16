@@ -201,14 +201,14 @@ dotenv = ["python-dotenv"]
 
 [[package]]
 name = "flask-wtf"
-version = "1.0.1"
+version = "1.1.0"
 description = "Form rendering, validation, and CSRF protection for Flask with WTForms."
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "Flask-WTF-1.0.1.tar.gz", hash = "sha256:34fe5c6fee0f69b50e30f81a3b7ea16aa1492a771fe9ad0974d164610c09a6c9"},
-    {file = "Flask_WTF-1.0.1-py3-none-any.whl", hash = "sha256:9d733658c80be551ce7d5bc13c7a7ac0d80df509be1e23827c847d9520f4359a"},
+    {file = "Flask-WTF-1.1.0.tar.gz", hash = "sha256:10fd267a41b6dee4f433ec8d6507d4cce4f1d71700280cf654a7cdbae6408d47"},
+    {file = "Flask_WTF-1.1.0-py3-none-any.whl", hash = "sha256:b37451583d41aa40678eeb28d81023d66ce239693c6c35fc57b989ef22053e98"},
 ]
 
 [package.dependencies]
@@ -894,4 +894,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "b22fa40bd92c5b2deef6cc5031f74af87bb07053b60e2fdecfdd1d0355821f80"
+content-hash = "0123d7ebdc482f8b1e6486c2dd0f06b479a2d6e8d3747cd5264590602323820d"
