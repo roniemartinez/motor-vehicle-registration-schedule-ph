@@ -15,7 +15,7 @@ pytz = "^2023.3"
 
 [tool.poetry.group.dev.dependencies]
 autoflake = "^1.4"
-black = "^23.1.0"
+black = "^23.3.0"
 isort = "^5.11.5"
 mypy = "^1.1"
 pyproject-flake8 = "^5.0.4"
