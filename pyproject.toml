@@ -1,16 +1,16 @@
 [tool.poetry]
 name = "motor-vehicle-registration-scheiule"
-version = "0.1.0"
+version = "0.1.1"
 description = "Sample application for the blog Knowing When to Renew your Vehicle's Registration in the Philippines🇵🇭 using Python"
 authors = ["Ronie Martinez <ronmarti18@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 Flask = "^2.2.5"
-gunicorn = "^21.2.0"
-gevent = "^22.10.2"
 Flask-WTF = "^1.1.1"
+gevent = "^23.9.1"
+gunicorn = "^21.2.0"
 pytz = "^2023.3"
 
 [tool.poetry.group.dev.dependencies]
