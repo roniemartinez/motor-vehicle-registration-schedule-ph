@@ -11,7 +11,7 @@ Flask = "^3.0.1"
 Flask-WTF = "^1.2.1"
 gevent = "^23.9.1"
 gunicorn = "^21.2.0"
-pytz = "^2023.3"
+pytz = "^2023.4"
 
 [tool.poetry.group.dev.dependencies]
 autoflake = "^1.4"
