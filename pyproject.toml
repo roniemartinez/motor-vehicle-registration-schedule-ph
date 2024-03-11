@@ -17,7 +17,7 @@ pytz = "^2024.1"
 autoflake = "^1.4"
 black = "^24.2.0"
 isort = "^5.13.2"
-mypy = "^1.8"
+mypy = "^1.9"
 pyproject-flake8 = "^5.0.4"
 types-pytz = "^2024.1.0"
 
