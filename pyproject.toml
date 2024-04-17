@@ -10,7 +10,7 @@ python = "^3.8"
 Flask = "^3.0.3"
 Flask-WTF = "^1.2.1"
 gevent = "^24.2.1"
-gunicorn = "^21.2.0"
+gunicorn = "^22.0.0"
 pytz = "^2024.1"
 
 [tool.poetry.group.dev.dependencies]
